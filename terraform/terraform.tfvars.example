@@ -1,0 +1,5 @@
+hcloud_token = "<your hetzner cloud token>"
+
+hcloud_ssh_keys_names = [
+  "user@example.com"
+]
