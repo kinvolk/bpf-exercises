@@ -10,12 +10,15 @@ build:
 		-I $(path)/arch/x86/include \
 		-I $(path)/arch/x86/include/generated \
 		-I $(path)/arch/x86/include/uapi )\
-		-O2 -g main.c \
-		-o main
+		-O2 -emit-llvm -c program.c \
+		-o - | \
+		llc -march=bpf -filetype=obj -o program.o
 
 .PHONY: build
 
 run:
-	./main
+	@mount -t debugfs debugfs /sys/kernel/debug/
+	@go get github.com/iovisor/gobpf/elf
+	@go run main.go
 
 .PHONY: run

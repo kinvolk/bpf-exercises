@@ -1,6 +1,10 @@
 DOCKER_IMAGE=kinvolk/bpf-exercises
 SUDO=$(shell docker info >/dev/null 2>&1 || echo "sudo -E")
 
+EXERCISES=$(wildcard exercise-*)
+BUILD_TARGETS=$(patsubst %,build-%,$(EXERCISES))
+RUN_TARGETS=$(patsubst %,run-%,$(EXERCISES))
+
 default:
 	@echo "Please choose a target"
 	@exit 1
@@ -17,8 +21,14 @@ run-container:
 
 .PHONY: run-container
 
-exercise-01:
+$(BUILD_TARGETS):
 	$(SUDO) docker run --rm --privileged -ti -v $(PWD):/bpf-exercises $(DOCKER_IMAGE) \
-		bash -c 'cd $@ && make'
+		bash -c 'cd $(@:build-%=%) && make build'
 
-.PHONY: exercise-01
+.PHONY: $(BUILD_TARGETS)
+
+$(RUN_TARGETS):
+	$(SUDO) docker run --rm --privileged -ti -v $(PWD):/bpf-exercises $(DOCKER_IMAGE) \
+		bash -c 'cd $(@:run-%=%) && make run'
+
+.PHONY: $(RUN_TARGETS)
