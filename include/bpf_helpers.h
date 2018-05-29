@@ -106,8 +106,11 @@ struct bpf_map_def {
 	unsigned int value_size;
 	unsigned int max_entries;
 	unsigned int map_flags;
-	unsigned int inner_map_idx;
-	unsigned int numa_node;
+	/* unsigned int inner_map_idx; */
+	/* unsigned int numa_node; */
+	/* gobpf specific fields: */
+	unsigned int pinning;
+	char namespace[256];
 };
 
 static int (*bpf_skb_load_bytes)(void *ctx, int off, void *to, int len) =
