@@ -14,7 +14,7 @@ make container
 
 ## Exercises
 
-Each exercise contains a README file with questions and / or tasks.
+Some exercises contain a README file with questions and / or tasks.
 
 If not otherwise noted, an exercise should be build and executable
 with the following commands:
