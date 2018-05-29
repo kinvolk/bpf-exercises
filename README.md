@@ -24,14 +24,14 @@ $ make build-exercise-XX
 $ make run-exercise-XX
 ```
 
-### exercise-01: a first eBPF progam
+### Exercise 01: a first eBPF progam
 
 ```
 $ make build-exercise-01
 $ make run-exercise-01
 ```
 
-### exercise-02: using ELF files
+### Exercise 02: using ELF files
 
 Build the exercise with:
 
@@ -55,6 +55,13 @@ In a second shell, run the Go program:
 
 ```
 $ make run-exercise-02
+```
+
+### Exercise 03: using maps
+
+```
+$ make build-exercise-03
+$ make run-exercise-03
 ```
 
 ## Building exercises manually
