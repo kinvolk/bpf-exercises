@@ -1,0 +1,12 @@
+diff --git a/exercise-01/main.c b/exercise-01/main.c
+index c0c6452..071e91b 100644
+--- a/exercise-01/main.c
++++ b/exercise-01/main.c
+@@ -20,6 +20,7 @@ int main() {
+ 
+ 	// FIXME
+ 	struct bpf_insn prog[] = {
++		BPF_MOV64_IMM(BPF_REG_0, 1),
+ 		BPF_EXIT_INSN(),
+ 	};
+ 
