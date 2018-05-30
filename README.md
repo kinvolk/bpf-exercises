@@ -5,6 +5,8 @@ Status: work in progress (commits will be rebased and squashed w/o notice)
 ## Requirements
 
 A Linux system with a recent kernel (v4.15 or newer) and Docker installed.
+You can either use the Vagrant box or ask us for a preconfigured VM in
+the cloud (for example to avoid a corporate proxy).
 
 Build the used Docker container with:
 

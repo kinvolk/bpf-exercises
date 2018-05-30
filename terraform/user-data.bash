@@ -1,8 +1,9 @@
 #!/bin/bash
 
 set -euo pipefail
+set -x
 
-adduser --disabled-password ubuntu
+id -u ubuntu &>/dev/null || adduser --disabled-password ubuntu
 usermod -a -G sudo ubuntu
 echo "%sudo ALL=(ALL) NOPASSWD:ALL" >>/etc/sudoers.d/10-sudo-group-nopasswd
 
