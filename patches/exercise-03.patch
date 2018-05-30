@@ -1,0 +1,45 @@
+diff --git a/exercise-03/main.go b/exercise-03/main.go
+index 3c95d5f..7358279 100644
+--- a/exercise-03/main.go
++++ b/exercise-03/main.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"os"
+ 	"os/signal"
++	"time"
++	"unsafe"
+ 
+ 	"github.com/iovisor/gobpf/elf"
+ )
+@@ -27,8 +29,30 @@ func main() {
+ 		os.Exit(1)
+ 	}
+ 
++	openatCountMap := module.Map("openat_count")
++	if openatCountMap == nil {
++		fmt.Fprintf(os.Stderr, "Failed to load 'openat_count' map\n")
++		os.Exit(1)
++	}
++
+ 	sig := make(chan os.Signal, 1)
+ 	signal.Notify(sig, os.Interrupt, os.Kill)
+ 
+-	<-sig
++L:
++	for {
++		select {
++		case <-sig:
++			break L
++		default:
++			time.Sleep(2 * time.Second)
++		}
++
++		var zero, count uint64
++		if err := module.LookupElement(openatCountMap, unsafe.Pointer(&zero), unsafe.Pointer(&count)); err != nil {
++			fmt.Fprintf(os.Stderr, "Failed to read count from map: %v\n", err)
++			os.Exit(1)
++		}
++
++		fmt.Printf("Current count is %d\n", count)
++	}
+ }
