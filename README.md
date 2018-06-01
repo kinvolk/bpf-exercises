@@ -1,6 +1,6 @@
 # Linux eBPF exercises
 
-Status: work in progress (commits will be rebased and squashed w/o notice)
+Small exercises to accompany an eBPF workshop.
 
 ## Requirements
 
@@ -135,7 +135,7 @@ $ curl ipschwein.de
 ## Building exercises manually
 
 By default, the exercises are build and run within a Docker container to spare
-user installing all requirements on the host system.
+users installing all requirements on the host system.
 
 To build an individual exercise outside of Docker, use the corresponding
 Makefile in the exercise directory. For that, kernel headers, clang-6.0,
