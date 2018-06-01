@@ -66,6 +66,28 @@ $ make build-exercise-03
 $ make run-exercise-03
 ```
 
+### Exercise 04: using a perf map
+
+Build the program:
+
+```
+$ make build-exercise-04
+```
+
+Run the container:
+
+```
+$ make run-exercise-04
+```
+
+Run the program manually and pass one or more process ids to watch:
+
+```
+$ go run main.go <pid>...
+```
+
+For example, open a new shell and use its pid: `echo $$`.
+
 ## Building exercises manually
 
 By default, the exercises are build and run within a Docker container to spare
