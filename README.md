@@ -88,6 +88,50 @@ $ go run main.go <pid>...
 
 For example, open a new shell and use its pid: `echo $$`.
 
+### Exercise 05: using a `sched_cls` program
+
+Build the program:
+
+```
+$ make build-exercise-05
+```
+
+Run the container:
+
+```
+$ make run-exercise-05
+```
+
+Load the eBPF program and put it in the background with:
+
+```
+$ go run main.go &
+```
+
+Add a new tc qdisc to `eth0`:
+
+```
+$ tc qdisc add dev eth0 clsact
+```
+
+Add the eBPF program as a filter to the qdisc:
+
+```
+$ tc filter add dev eth0 ingress bpf object-pinned /sys/fs/bpf/bpf-sched-cls-test/demo
+```
+
+On the host, watch the `trace_pipe`:
+
+```
+$ cat /sys/kernel/debug/tracing/trace_pipe
+```
+
+In the container, produce some network traffic, e.g.
+
+```
+$ curl ipschwein.de
+```
+
 ## Building exercises manually
 
 By default, the exercises are build and run within a Docker container to spare

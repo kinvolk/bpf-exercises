@@ -6,9 +6,12 @@ RUN apt-get update && \
   clang \
   curl \
   git \
+  iproute2 \
+  iputils-ping \
   linux-headers-generic \
   llvm \
   make \
+  netcat-openbsd \
   vim
 
 RUN cd /tmp && \
