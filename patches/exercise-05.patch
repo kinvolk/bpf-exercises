@@ -1,0 +1,23 @@
+diff --git a/exercise-05/program.c b/exercise-05/program.c
+index 6cc4149..a260fc1 100644
+--- a/exercise-05/program.c
++++ b/exercise-05/program.c
+@@ -3,6 +3,7 @@
+ #pragma clang diagnostic ignored "-Waddress-of-packed-member"
+ #include <linux/bpf.h>
+ #pragma clang diagnostic pop
++#include <linux/ip.h>
+ 
+ #include "../include/bpf_helpers.h"
+ 
+@@ -15,8 +16,8 @@
+ SEC("sched_cls/demo")
+ int demo(struct __sk_buff *skb)
+ {
+-	printt("Hello from eBPF land!\n");
+-
++	uint8_t proto = load_byte(skb, ETH_HLEN + offsetof(struct iphdr, protocol));
++	printt("proto: %d\n", proto);
+ 	return 0;
+ }
+ 
