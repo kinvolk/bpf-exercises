@@ -3,6 +3,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
+  config.vm.hostname = "bpf-playground"
   config.vm.network "private_network", ip: "192.168.167.10"
 
   config.vm.provision "shell", path: "terraform/user-data.bash"
