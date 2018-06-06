@@ -136,6 +136,9 @@ $ curl ipschwein.de
 
 See exercise-06/README.md
 
+### Exercise 07: using XDP from bcc
+
+See exercise-07/README.md
 
 ## Building exercises manually
 
