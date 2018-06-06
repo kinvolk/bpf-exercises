@@ -23,7 +23,8 @@ Hints:
 
 * You can start with program.c from exercise 05.
 * You have to find out how to signal the kernel to drop a packet from
-  a clsact program.
+  a clsact program. Look for `TC_ACT...` in the kernel sources, e.g.
+  https://github.com/torvalds/linux/blob/master/include/uapi/linux/pkt_cls.h
 
 Note: do not attach the filter to the default interface / route when
 you rely on a SSH connection for access :)
