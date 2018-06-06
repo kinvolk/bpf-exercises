@@ -132,6 +132,11 @@ In the container, produce some network traffic, e.g.
 $ curl ipschwein.de
 ```
 
+### Exercise 06: adding a filter to a `clsact` qdisc
+
+See exercise-06/README.md
+
+
 ## Building exercises manually
 
 By default, the exercises are build and run within a Docker container to spare
