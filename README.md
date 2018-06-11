@@ -80,7 +80,7 @@ Run the container:
 $ make run-exercise-04
 ```
 
-Run the program manually and pass one or more process ids to watch:
+In the container, run the program manually and pass one or more process ids to watch:
 
 ```
 $ go run main.go <pid>...
